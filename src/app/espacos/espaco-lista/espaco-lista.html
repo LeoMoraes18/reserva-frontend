@@ -1,0 +1,14 @@
+<button (click)="alternarFiltro()">
+  {{ somenteGrandes() ? 'Mostrar todos' : 'Só grandes' }}
+</button>
+<button (click)="adicionarTeste()">
+  Adicionar teste
+</button>
+<ul>
+  @for (e of visiveis(); track e.id) {
+    <li><app-espaco-card [espaco]="e" /></li>
+  } @empty {
+    <li>Nunhum espaço encontrado.</li>
+  }
+</ul>
+<p>Capacidade total: {{ capacidadeTotal() }}</p>

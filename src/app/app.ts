@@ -1,8 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { EspacoLista } from './espacos/espaco-lista/espaco-lista';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, EspacoLista],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',
