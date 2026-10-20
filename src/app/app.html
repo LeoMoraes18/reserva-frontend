@@ -1,5 +1,10 @@
 <header>
   <h1>{{ title() }}</h1>
+
+  <nav>
+    <a routerLink="/espacos" routerLinkActive="ativo">Espaços</a>
+    <a routerLink="/reservas" routerLinkActive="ativo">Reservas</a>
+  </nav>
 </header>
-<app-espaco-lista />
+
 <router-outlet />
