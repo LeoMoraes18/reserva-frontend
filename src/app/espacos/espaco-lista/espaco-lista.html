@@ -1,11 +1,13 @@
-<a routerLink="/espacos/novo">Novo Espaço</a>
-<button (click)="alternarFiltro()">
-  {{ somenteGrandes() ? 'Mostrar todos' : 'Só grandes' }}
-</button>
-<button (click)="adicionarTeste()">
-  Adicionar teste
-</button>
-<ul>
+<div class="topo">
+  <h2>Espaços</h2>
+  <div class="acoes">
+    <button mat-stroked-button (click)="alternarFiltro()">
+      {{ somenteGrandes() ? 'Mostrar todos' : 'Só grandes' }}
+    </button>
+    <a mat-flat-button routerLink="/espacos/novo">Novo Espaço</a>
+  </div>
+</div>
+<ul class="grade">
   @for (e of visiveis(); track e.id) {
     <li><app-espaco-card [espaco]="e" /></li>
   } @empty {

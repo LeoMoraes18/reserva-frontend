@@ -3,9 +3,10 @@ import { Espaco } from '../espaco';
 import { EspacoCard } from '../espaco-card/espaco-card';
 import { EspacoApi } from '../espaco-api';
 import { RouterLink } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  imports: [EspacoCard, RouterLink],
+  imports: [EspacoCard, RouterLink, MatButtonModule],
   selector: 'app-espaco-lista',
   styleUrl: './espaco-lista.scss',
   templateUrl: './espaco-lista.html',
@@ -30,19 +31,6 @@ export class EspacoLista implements OnInit {
 
   protected alternarFiltro() {
     this.somenteGrandes.update((v) => !v)
-  }
-
-  protected adicionarTeste() {
-    this.espacos.update(
-      (lista) => [...lista,
-        {
-          id: 'test-' + Date.now(),
-          nome: 'Sala de teste',
-          descricao: 'Criado pelo botão',
-          capacidade: 10,
-          ativo: true
-        }
-      ]);
   }
 
   ngOnInit(): void {

@@ -1,37 +1,42 @@
-<h1>Criando novo espaço</h1>
-
-<a routerLink="/espacos">Cancelar</a>
-
 <form [formGroup]="form" (ngSubmit)="salvar()">
-  <label>
-    Nome
-    <input formControlName="nome" />
-  </label>
-  @if (form.controls.nome.touched && form.controls.nome.hasError('required')) {
-    <small>O nome é obrigatório.</small>
-  }
-  @if (form.controls.nome.touched && form.controls.nome.hasError('maxlength')) {
-    <small>O nome tem no máximo 100 caracteres.</small>
-  }
+  <mat-form-field appearance="outline">
+    <mat-label>
+      Nome
+    </mat-label>
+    <input matInput formControlName="nome" />
+    @if (form.controls.nome.hasError('required')) {
+      <mat-error>O nome é obrigatório.</mat-error>
+    }
+    @if (form.controls.nome.hasError('maxlength')) {
+      <mat-error>O nome tem no máximo 100 caracteres.</mat-error>
+    }
+  </mat-form-field>
 
-  <label>
-    Descrição
-    <textarea formControlName="descricao"></textarea>
-  </label>
+  <mat-form-field appearance="outline">
+    <mat-label>
+      Descrição
+    </mat-label>
+    <textarea matInput formControlName="descricao"></textarea>
+  </mat-form-field>
 
-  <label>
-    Capacidade
-    <input type="number" formControlName="capacidade" />
-  </label>
-  @if (form.controls.capacidade.touched && form.controls.capacidade.hasError('required')) {
-    <small>a capacidade é obrigatória.</small>
-  }
-  @if (form.controls.capacidade.touched && form.controls.capacidade.hasError('min')) {
-    <small>a capacidade não pode ser menor que 1.</small>
-  }
+  <mat-form-field appearance="outline">
+    <mat-label>
+      Capacidade
+    </mat-label>
+    <input matInput type="number" formControlName="capacidade" />
+    @if (form.controls.capacidade.hasError('required')) {
+      <mat-error>a capacidade é obrigatória.</mat-error>
+    }
+    @if (form.controls.capacidade.hasError('min')) {
+      <mat-error>a capacidade não pode ser menor que 1.</mat-error>
+    }
+  </mat-form-field>
 
   @if (erroServidor()) {
-    <p>{{ erroServidor() }}</p>
+    <p class="erro">{{ erroServidor() }}</p>
   }
-  <button type="submit" [disabled]="salvando()">Salvar</button>
+  <div class="botoes">
+    <a mat-button routerLink="/espacos">Cancelar</a>
+    <button mat-flat-button type="submit" [disabled]="salvando()">Salvar</button>
+  </div>
 </form>

@@ -1,12 +1,10 @@
 import { Routes } from '@angular/router';
 import { EspacoLista } from './espacos/espaco-lista/espaco-lista';
-import { ReservaLista } from './reservas/reserva-lista/reserva-lista';
-import { EspacoForm } from './espacos/espaco-form/espaco-form';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'espacos', pathMatch: 'full'},
   { path: 'espacos', component: EspacoLista },
-  { path: 'reservas', component: ReservaLista },
-  { path: 'espacos/novo', component: EspacoForm},
+  { path: 'reservas', loadComponent: () => import('./reservas/reserva-lista/reserva-lista').then((m) => m.ReservaLista) },
+  { path: 'espacos/novo', loadComponent: () => import('./espacos/espaco-form/espaco-form').then((m) => m.EspacoForm) },
   { path: '**', redirectTo: 'espacos' },
 ];

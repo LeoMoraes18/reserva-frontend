@@ -1,10 +1,10 @@
-<header>
-  <h1>{{ title() }}</h1>
+<mat-toolbar>
+  <span>{{ title() }}</span>
+  <span class="espaco"></span>
+  <a mat-button routerLink="/espacos" routerLinkActive="ativo">Espaços</a>
+  <a mat-button routerLink="/reservas" routerLinkActive="ativo">Reservas</a>
+</mat-toolbar>
 
-  <nav>
-    <a routerLink="/espacos" routerLinkActive="ativo">Espaços</a>
-    <a routerLink="/reservas" routerLinkActive="ativo">Reservas</a>
-  </nav>
-</header>
-
-<router-outlet />
+<main>
+  <router-outlet />
+</main>
