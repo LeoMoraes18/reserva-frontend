@@ -2,9 +2,10 @@ import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { Espaco } from '../espaco';
 import { EspacoCard } from '../espaco-card/espaco-card';
 import { EspacoApi } from '../espaco-api';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [EspacoCard],
+  imports: [EspacoCard, RouterLink],
   selector: 'app-espaco-lista',
   styleUrl: './espaco-lista.scss',
   templateUrl: './espaco-lista.html',
@@ -30,7 +31,7 @@ export class EspacoLista implements OnInit {
   protected alternarFiltro() {
     this.somenteGrandes.update((v) => !v)
   }
-  
+
   protected adicionarTeste() {
     this.espacos.update(
       (lista) => [...lista,

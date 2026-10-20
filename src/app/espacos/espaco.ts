@@ -5,3 +5,9 @@ export interface Espaco {
   capacidade: number;
   ativo: boolean;
 }
+
+export interface EspacoRequest {
+  nome: string;
+  descricao: string;
+  capacidade: number;
+}
