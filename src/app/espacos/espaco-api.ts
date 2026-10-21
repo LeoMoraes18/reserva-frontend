@@ -12,6 +12,6 @@ export class EspacoApi {
   }
 
   cadastrar(request: EspacoRequest): Observable<Espaco> {
-    return this.http.post<Espaco>('/api/espacos', request)
+    return this.http.post<Espaco>('/api/espacos', request);
   }
 }
