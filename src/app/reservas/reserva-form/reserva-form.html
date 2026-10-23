@@ -1,0 +1,53 @@
+<form [formGroup]="form" (ngSubmit)="salvar()">
+  <mat-form-field appearance="outline">
+    <mat-label>Espaço</mat-label>
+    <mat-select formControlName="espacoId">
+      @for (e of espacos(); track e.id) {
+        <mat-option [value]="e.id">{{ e.nome }}</mat-option>
+      }
+    </mat-select>
+    @if (form.controls.espacoId.hasError('required')) {
+      <mat-error>O espaço é obrigatório.</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Data</mat-label>
+    <input matInput [matDatepicker]="pickerData" formControlName="data" [min]="hoje" />
+    <mat-datepicker-toggle matIconSuffix [for]="pickerData" />
+    <mat-datepicker #pickerData />
+    @if (form.controls.data.hasError('required')) {
+      <mat-error>A data é obrigatória.</mat-error>
+    }
+  </mat-form-field>
+
+  <div class="horarios">
+    <mat-form-field appearance="outline">
+      <mat-label>Hora início</mat-label>
+      <input matInput [matTimepicker]="pickerInicio" formControlName="horaInicio" />
+      <mat-timepicker-toggle matIconSuffix [for]="pickerInicio" />
+      <mat-timepicker #pickerInicio interval="30min" />
+      @if (form.controls.horaInicio.hasError('required')) {
+        <mat-error>A hora de início é obrigatória.</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Hora fim</mat-label>
+      <input matInput [matTimepicker]="pickerFim" formControlName="horaFim" />
+      <mat-timepicker-toggle matIconSuffix [for]="pickerFim" />
+      <mat-timepicker #pickerFim interval="30min" />
+      @if (form.controls.horaFim.hasError('required')) {
+        <mat-error>A hora de fim é obrigatória.</mat-error>
+      }
+    </mat-form-field>
+  </div>
+
+  @if (erroServidor()) {
+    <p class="erro">{{ erroServidor() }}</p>
+  }
+  <div class="botoes">
+    <a mat-button routerLink="/reservas">Cancelar</a>
+    <button mat-flat-button type="submit" [disabled]="salvando()">Salvar</button>
+  </div>
+</form>
